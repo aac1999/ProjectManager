@@ -8,6 +8,7 @@ public class Circle extends FillableShape{
 
     public Circle(double x, double y, Color color, boolean filled, double diameter) {
         super(x, y, color, filled);
+        if(diameter<=0) throw new IllegalArgumentException("Too small Diameter Value");
         this.diameter = diameter;
     }
 
@@ -21,6 +22,7 @@ public class Circle extends FillableShape{
     }
 
     public void setDiameter(double diameter) {
+        if(diameter<=0) throw new IllegalArgumentException("Too small Diameter Value");
         this.diameter = diameter;
     }
 
@@ -39,19 +41,18 @@ public class Circle extends FillableShape{
 
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
-        //OBS: Fungerar endast övre och vänstra sidan!
+        // If outside the box - calculate new dx and dy
         super.constrain(boxX, boxY, boxWidth, boxHeight);
         double dx = getDx();
         double dy = getDy();
-
-        if (diameter < boxX) {
+        if (getX() + diameter < boxX ) {
             dx = Math.abs(dx);
-        } else if (diameter > boxWidth) {
+        } else if (getX() + diameter > boxWidth) {
             dx = -Math.abs(dx);
         }
-        if (diameter < boxY) {
+        if (getY() + diameter < boxY) {
             dy = Math.abs(dy);
-        } else if (diameter > boxHeight) {
+        } else if (getY() + diameter > boxHeight) {
             dy = -Math.abs(dy);
         }
         setVelocity(dx, dy);
