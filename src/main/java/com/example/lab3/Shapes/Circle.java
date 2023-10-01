@@ -36,9 +36,25 @@ public class Circle extends FillableShape{
         }
     }
 
+
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {
-        //TODO: Implement!
+        //OBS: Fungerar endast övre och vänstra sidan!
+        super.constrain(boxX, boxY, boxWidth, boxHeight);
+        double dx = getDx();
+        double dy = getDy();
+
+        if (diameter < boxX) {
+            dx = Math.abs(dx);
+        } else if (diameter > boxWidth) {
+            dx = -Math.abs(dx);
+        }
+        if (diameter < boxY) {
+            dy = Math.abs(dy);
+        } else if (diameter > boxHeight) {
+            dy = -Math.abs(dy);
+        }
+        setVelocity(dx, dy);
     }
 
     @Override

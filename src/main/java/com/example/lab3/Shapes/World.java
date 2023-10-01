@@ -25,11 +25,12 @@ public class World {
         this.width = width;
         this.height = height;
 
-     /*   shapes = new Shape[1]; // an array of references (change to non-zero size)
+     /*  shapes = new Shape[1]; // an array of references (change to non-zero size)
         shapes[0] = new Line(0, 0, 100, 80, Color.BLACK);
         shapes[0].setVelocity(20, 40); */
         shapes = new Shape[1];
-        shapes[0] = new Circle(0, 0, Color.RED, true, 100); //testar cirkel
+        shapes[0] = new Circle(100, 100, Color.RED, true, 100); //testar cirkel
+        shapes[0].setVelocity(20, 40);
         // Create the actual Shape objects (sub types)
         // ....
     }
