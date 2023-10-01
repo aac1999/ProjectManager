@@ -12,7 +12,7 @@ abstract public class FillableShape extends Shape{
 
     protected FillableShape() {
         super();
-        this.filled = filled;
+        this.filled = true; //this.filled = filled, kan alternativt också sätta this.filled till false.
     }
 
     public boolean isFilled() {
