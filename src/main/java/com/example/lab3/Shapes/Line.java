@@ -3,7 +3,8 @@ package com.example.lab3.Shapes;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Line extends Shape{
+public class Line extends Shape {
+
     private double x2, y2;
 
     public Line(double x, double y, double x2, double y2, Color color) {
@@ -23,7 +24,7 @@ public class Line extends Shape{
     }
 
     public void setX2(double x2) {
-        //kontrakt! Bara sätta positiva värden och x2 måste vara större än x
+        // add conditions
         this.x2 = x2;
     }
 
@@ -32,7 +33,7 @@ public class Line extends Shape{
     }
 
     public void setY2(double y2) {
-        //kontrakt!
+        // add conditions
         this.y2 = y2;
     }
 
@@ -64,14 +65,15 @@ public class Line extends Shape{
 
     @Override
     public void paint(GraphicsContext gc) {
-    gc.setStroke(getColor());
-    gc.strokeLine(getX(), getY(), x2, y2);
+        gc.setStroke(getColor());
+        gc.strokeLine(getX(), getY(), x2, y2);
     }
 
     @Override
     public String toString() {
         return super.toString() +
                 ", x2=" + x2 +
-                ", y2=" + y2;
+                ", y2=" + y2 +
+                '}';
     }
 }
