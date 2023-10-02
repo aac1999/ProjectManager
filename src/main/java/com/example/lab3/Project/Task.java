@@ -3,7 +3,7 @@ package com.example.lab3.Project;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Task implements Serializable { //ska implementera comparable o serializable
+public class Task implements Comparable<Task>, Serializable { //Tror det ska vara Comparable<Task>?
 
     private String descriptions;
     private int id;
@@ -33,8 +33,9 @@ public class Task implements Serializable { //ska implementera comparable o seri
         this.prio = prio;
     }
 
-    public int CompareTo(Task other){
+    @Override
+    public int compareTo(Task other) {
         //TODO: Implement
-        return 0; //lagt till för nu för att få bort varning.
+        return 0;
     }
 }
