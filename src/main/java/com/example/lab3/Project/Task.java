@@ -12,30 +12,36 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
     private LocalDate lastUpdate;
     private TaskPrio prio;
 
-    public Task(String descriptions, TaskPrio prio, int id) { //den ska vara package private (~) ?
+    Task(String descriptions, TaskPrio prio, int id) {
+        //ska vara package-private (~) så ingen private/public i början?
         this.descriptions = descriptions;
         this.id = id;
-        Takenby = null; //lagt till null
-        this.state = TaskState.TO_DO; //lagt till state=TO_DO
-        this.lastUpdate = lastUpdate; //osäker?
+        this.Takenby = null; //lagt till null
+        this.state = TaskState.TO_DO;
+        this.lastUpdate = LocalDate.now();
         this.prio = prio;
     }
 
     public void setTakenby(String takenby) {
+        if(this.state == TaskState.IN_PROGRESS) throw new IllegalStateException("Task In Progress");
         Takenby = takenby;
+        this.lastUpdate = LocalDate.now();
     }
 
     public void setState(TaskState state) {
         this.state = state;
+        this.lastUpdate = LocalDate.now();
     }
 
     public void setPrio(TaskPrio prio) {
         this.prio = prio;
+        this.lastUpdate = LocalDate.now();
     }
 
     @Override
     public int compareTo(Task other) {
-        //TODO: Implement
+        //TODO: Implement!
+        //jämför prio(första nyckeln) och description (andra nyckeln)
         return 0;
     }
 }
