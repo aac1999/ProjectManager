@@ -25,14 +25,23 @@ public class World {
         this.width = width;
         this.height = height;
 
-        /* shapes = new Shape[1]; // an array of references (change to non-zero size)
-        shapes[0] = new Line(0, 0, 100, 80, Color.BLACK);
-        shapes[0].setVelocity(20, 40); */
-        shapes = new Shape[2];
-        shapes[0] = new Circle(100, 100, Color.RED, true, 100); //testar cirkel
-        shapes[0].setVelocity(20, 40);
+        shapes = new Shape[3]; // an array of references (change to non-zero size)
+        shapes[0] = new Circle(0, 0, Color.VIOLET, false, 100);
+        if (shapes[0] instanceof FillableShape) {
+            if (((FillableShape) shapes[0]).isFilled()) {
+                ((FillableShape) shapes[0]).setFilled(false);
+            }
+            else if (!((FillableShape) shapes[0]).isFilled()) {
+                ((FillableShape) shapes[0]).setFilled(true);
+            }
+        }
+        shapes[0].setVelocity(20, 70);
+
         shapes[1] = new Rectangle(0, 0, 100, 100, Color.TURQUOISE, true);
         shapes[1].setVelocity(40, 50);
+
+        shapes[2] = new Line(0, 0, 100, 50, Color.YELLOWGREEN);
+        shapes[2].setVelocity(10, 5);
         // Create the actual Shape objects (sub types)
         // ....
     }
