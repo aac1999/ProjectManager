@@ -12,7 +12,7 @@ public class Project implements Comparable<Project>, Serializable {
     private String description;
     private int nextTaskId;
     private ArrayList<Task> tasks;
-    LocalDate localDate;
+    private LocalDate localDate;
 
     Project(String title, String description, int id) {
         this.title = title;
