@@ -54,13 +54,13 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "\nTask{" +
                 "descriptions='" + descriptions + '\'' +
                 ", id=" + id +
                 ", Takenby='" + Takenby + '\'' +
                 ", state=" + state +
                 ", lastUpdate=" + lastUpdate +
                 ", prio=" + prio +
-                '}';
+                "}";
     }
 }
