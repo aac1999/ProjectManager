@@ -56,7 +56,19 @@ public class Project implements Comparable<Project>, Serializable {
     }
 
     @Override
-    public int compareTo(Project o) {
-        return 0;
+    public int compareTo(Project other) {
+        return this.title.compareTo(other.title);
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "title='" + title + '\'' +
+                ", id=" + id +
+                ", description='" + description + '\'' +
+                ", created=" + created +
+                ", nextTaskId=" + nextTaskId +
+                ", tasks=" + tasks +
+                '}';
     }
 }
