@@ -8,6 +8,7 @@ public class Circle extends FillableShape{
 
     public Circle(double x, double y, Color color, boolean filled, double diameter) {
         super(x, y, color, filled);
+        if(diameter<=0) throw new IllegalArgumentException("Too small Diameter Value");
         this.diameter = diameter;
     }
 
@@ -21,6 +22,7 @@ public class Circle extends FillableShape{
     }
 
     public void setDiameter(double diameter) {
+        if(diameter<=0) throw new IllegalArgumentException("Too small Diameter Value");
         this.diameter = diameter;
     }
 
@@ -35,6 +37,7 @@ public class Circle extends FillableShape{
             gc.fillOval(getX(), getY(), diameter, diameter); //kolla om allt stämmer senare!!
         }
     }
+
 
     @Override
     public void constrain(double boxX, double boxY, double boxWidth, double boxHeight) {

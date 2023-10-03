@@ -9,6 +9,7 @@ public class Rectangle extends FillableShape{
 
     public Rectangle(double x, double y, double width, double height, Color color, boolean filled) {
         super(x, y, color, filled);
+        if(width<=0 || height<=0) throw new IllegalArgumentException("Width or Height Value Too Small");
         this.width = width;
         this.height = height;
     }
@@ -24,7 +25,7 @@ public class Rectangle extends FillableShape{
     }
 
     public void setWidth(double width) {
-        // add conditions
+        if(width<=0) throw new IllegalArgumentException("Width Value Too Small");
         this.width = width;
     }
 
@@ -33,13 +34,15 @@ public class Rectangle extends FillableShape{
     }
 
     public void setHeight(double height) {
-        // add conditions
+        if(height<=0) throw new IllegalArgumentException("Height Value Too Small");
         this.height = height;
     }
 
     @Override
     public void move(long elapsedTimeNs) {
         super.move(elapsedTimeNs);
+        //x2 += getDx() * elapsedTimeNs / BILLION;
+        //y2 += getDy() * elapsedTimeNs / BILLION;
     }
 
     @Override
