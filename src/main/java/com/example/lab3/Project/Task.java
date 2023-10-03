@@ -61,6 +61,6 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
                 ", state=" + state +
                 ", lastUpdate=" + lastUpdate +
                 ", prio=" + prio +
-                "}";
+                '}';
     }
 }
