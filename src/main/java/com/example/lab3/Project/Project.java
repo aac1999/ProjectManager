@@ -20,14 +20,22 @@ public class Project implements Comparable<Project>, Serializable {
         this.description = description;
         this.nextTaskId = 0;    // antar att det ska börja från noll?
         this.created =  LocalDate.now();
+        this.tasks = new ArrayList<>();
     }
 
     public Task getTaskById(int id) {
         return tasks.get(id);
     }
 
+    public ArrayList<Task> getTasks() {
+        ArrayList<Task> copy = new ArrayList<>();
+        copy.addAll(tasks);
+        return copy;
+    }
+
     public Task addTask(String description, TaskPrio prio) {
         Task task = new Task(description, prio, nextTaskId++);  // ej säker på denna!
+        tasks.add(task);
         return task;
     }
 

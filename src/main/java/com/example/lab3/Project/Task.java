@@ -51,4 +51,16 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
     public LocalDate getLastUpdate() {  // Lagt till metoden sålänge, får se vad Anders säger
         return lastUpdate;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "descriptions='" + descriptions + '\'' +
+                ", id=" + id +
+                ", Takenby='" + Takenby + '\'' +
+                ", state=" + state +
+                ", lastUpdate=" + lastUpdate +
+                ", prio=" + prio +
+                '}';
+    }
 }
