@@ -47,4 +47,8 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
         }
         return result;
     }
+
+    public LocalDate getLastUpdate() {  // Lagt till metoden sålänge, får se vad Anders säger
+        return lastUpdate;
+    }
 }

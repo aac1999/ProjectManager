@@ -10,16 +10,16 @@ public class Project implements Comparable<Project>, Serializable {
     private String title;
     private int id;
     private String description;
+    private LocalDate created;
     private int nextTaskId;
     private ArrayList<Task> tasks;
-    private LocalDate localDate;
 
     Project(String title, String description, int id) {
         this.title = title;
         this.id = id;
         this.description = description;
         this.nextTaskId = 0;    // antar att det ska börja från noll?
-        this.localDate =  LocalDate.now();
+        this.created =  LocalDate.now();
     }
 
     public Task getTaskById(int id) {
@@ -41,6 +41,19 @@ public class Project implements Comparable<Project>, Serializable {
         else return ProjectState.ONGOING;
     }
 
+    public LocalDate getLastUpdated() {
+        // funkar endast om jag lagt till getLastUpdate() i Task.java
+        if (!tasks.isEmpty()) {
+            LocalDate date = tasks.get(0).getLastUpdate();
+            for (int i = 1; i < tasks.size(); i++) {
+                if (date.isBefore(tasks.get(i).getLastUpdate())) {
+                    date = tasks.get(i).getLastUpdate();
+                }
+            }
+            return date;
+        }
+            return this.created;
+    }
 
     @Override
     public int compareTo(Project o) {
