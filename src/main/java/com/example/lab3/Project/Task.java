@@ -40,8 +40,11 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
 
     @Override
     public int compareTo(Task other) {
-        //TODO: Implement!
         //jämför prio(första nyckeln) och description (andra nyckeln)
-        return 0;
+        int result = this.prio.ordinal() - other.prio.ordinal();
+        if(result == 0) {
+            result = this.descriptions.compareTo(other.descriptions); //fråga Anders OM RÄTT
+        }
+        return result;
     }
 }
