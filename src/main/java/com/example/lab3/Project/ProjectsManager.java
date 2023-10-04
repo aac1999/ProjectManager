@@ -18,6 +18,13 @@ public class ProjectsManager {
         nextProjectId++;
     }
 
+    public Project addProject(String title, String description) {
+        //kontrollera att titeln är unik med hjälp av isTitleUnique, om ej, släng TitleNotUniqueException
+        Project p = new Project(title, description, nextProjectId++);
+        projects.add(p);
+        return p;
+    }
+
     public boolean isTitleUnique(String title) { //TROR JAG HAR GJORT RÄTT MEN OSÄKER
         //ska kolla om titeln är unik eller ej
         for (int i = 1; i < projects.size(); i++) {
@@ -26,5 +33,28 @@ public class ProjectsManager {
             }
         }
         return false;
+    }
+
+    public void removeProject(Project project) {
+        //Säkerställ att den är rätt
+        projects.remove(project);
+    }
+
+    public ArrayList<Project> getProjects() {
+        //Getter
+        return projects;
+    }
+
+    public int getNextProjectId() {
+        //Getter
+        return nextProjectId;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectsManager{" +
+                "projects=" + projects +
+                ", nextProjectId=" + nextProjectId +
+                '}';
     }
 }
