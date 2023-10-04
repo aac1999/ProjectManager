@@ -43,7 +43,9 @@ public class ProjectsManager {
 
     public ArrayList<Project> getProjects() {
         //Getter
-        return projects;
+        ArrayList<Project> copy = new ArrayList<>();
+        copy.addAll(projects);
+        return copy;
     }
 
     public int getNextProjectId() {
