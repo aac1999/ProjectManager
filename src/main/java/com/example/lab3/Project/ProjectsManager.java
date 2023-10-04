@@ -15,6 +15,7 @@ public class ProjectsManager {
     public void setProjects(List<Project> incomingProjects) {
         projects.clear();
         //lägg till projects ? (incomingProjects)
+        projects.addAll(incomingProjects);
         nextProjectId++;
     }
 
