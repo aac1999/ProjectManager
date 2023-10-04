@@ -1,11 +1,12 @@
-package com.example.lab3.Project;
+package com.example.lab3.Project.model;
+
+import com.example.lab3.Project.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class Project implements Comparable<Project>, Serializable, ITaskMatcher {
 

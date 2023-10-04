@@ -1,4 +1,6 @@
-package com.example.lab3.Project;
+package com.example.lab3.Project.model;
+
+import com.example.lab3.Project.model.Project;
 
 import java.util.ArrayList;
 import java.util.List;

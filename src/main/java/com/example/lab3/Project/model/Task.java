@@ -1,4 +1,7 @@
-package com.example.lab3.Project;
+package com.example.lab3.Project.model;
+
+import com.example.lab3.Project.TaskPrio;
+import com.example.lab3.Project.TaskState;
 
 import java.io.Serializable;
 import java.time.LocalDate;
