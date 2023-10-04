@@ -14,8 +14,15 @@ public class ProjectsManager {
 
     public void setProjects(List<Project> incomingProjects) {
         projects.clear();
+        projects.addAll(incomingProjects);
         //lägg till projects ? (incomingProjects)
         nextProjectId++;
+    }
+
+    public Project addProject(String title, String description) {
+        Project p = new Project(title, description, nextProjectId++);
+        projects.add(p);
+        return p;
     }
 
     public boolean isTitleUnique(String title) { //TROR JAG HAR GJORT RÄTT MEN OSÄKER
