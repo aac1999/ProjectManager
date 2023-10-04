@@ -20,6 +20,7 @@ public class ProjectsManager {
 
     public Project addProject(String title, String description) {
         //kontrollera att titeln är unik med hjälp av isTitleUnique, om ej, släng TitleNotUniqueException
+        if(isTitleUnique(title)) throw new TitleNotUniqueException(); //kontrollera senare om det rätt
         Project p = new Project(title, description, nextProjectId++);
         projects.add(p);
         return p;
