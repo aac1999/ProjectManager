@@ -101,13 +101,6 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Project project)) return false;
-        return Objects.equals(title, project.title);
-    }
-
-    @Override
     public String toString() {
         return "Project{" +
                 "title='" + title + '\'' +
