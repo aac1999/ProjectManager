@@ -61,6 +61,11 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
         return t;
     }
 
+    public boolean removeTask(Task task) {
+        boolean removed = tasks.remove(task);
+        return removed;
+    }
+
     public ProjectState getProjectState() {
         if (tasks.isEmpty()) {
             return ProjectState.EMPTY;
