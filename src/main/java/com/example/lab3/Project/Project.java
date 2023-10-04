@@ -25,7 +25,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
         this.tasks = new ArrayList<>();
     }
 
-    public Task getTaskById(int id) {
+    public Task getTaskById(int id) throws IndexOutOfBoundsException {
         //ändrat så att den matchar med taskens faktiska id
         //istället för dess position
         for (Task task : tasks) {
@@ -33,7 +33,8 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
                 return task;
             }
         }
-        return null;
+        throw new NoMatchingIdException("No matching ID");
+        // eller return null?
     }
 
     public ArrayList<Task> getTasks() {
@@ -110,6 +111,17 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
     @Override
     public int compareTo(Project other) {
         return this.title.compareTo(other.title);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        //Gjorde samma som vi hade i Task.
+        if (this == other) return true;
+        if(other instanceof Task) {
+            Project otherProject = (Project) other;
+            return this.compareTo(otherProject) == 0;
+        }
+        return false;
     }
 
     @Override
