@@ -43,7 +43,19 @@ public class ProjectsManager {
 
     public ArrayList<Project> getProjects() {
         //Getter
-        return projects;
+        ArrayList<Project> copy = new ArrayList<>();
+        copy.addAll(projects);
+        return copy;
+    }
+
+    public Project getProjectById(int id) {
+        for (Project project : projects) {
+            if (project.getId() == id) {
+                return project;
+            }
+        }
+        throw new NoMatchingIdException("No matching ID");
+        // eller return null?
     }
 
     public int getNextProjectId() {
