@@ -9,8 +9,8 @@ import java.util.Objects;
 
 public class Project implements Comparable<Project>, Serializable, ITaskMatcher {
 
-    private String title;
-    private int id;
+    private final String title;
+    private final int id;
     private String description;
     private LocalDate created;
     private int nextTaskId;
@@ -25,7 +25,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
         this.tasks = new ArrayList<>();
     }
 
-    public Task getTaskById(int id) throws IndexOutOfBoundsException {
+    public Task getTaskById(int id) {
         //ändrat så att den matchar med taskens faktiska id
         //istället för dess position
         for (Task task : tasks) {
@@ -33,8 +33,8 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
                 return task;
             }
         }
-        throw new NoMatchingIdException("No matching ID");
-        // eller return null?
+        return null;
+        // eller exception?
     }
 
     public ArrayList<Task> getTasks() {

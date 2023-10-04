@@ -54,13 +54,24 @@ public class ProjectsManager {
                 return project;
             }
         }
-        throw new NoMatchingIdException("No matching ID");
-        // eller return null?
+        return null;
+        //eller exception?
     }
 
     public int getNextProjectId() {
         //Getter
         return nextProjectId;
+    }
+
+    private int getHighestId() {
+        int highestId = projects.get(0).getId();
+        for (int i = 1; i < projects.size(); i++) {
+            int currentId = projects.get(i).getId();
+            if (currentId > highestId) {
+                highestId = currentId; // Update the highest ID
+            }
+        }
+        return highestId;
     }
 
     @Override
