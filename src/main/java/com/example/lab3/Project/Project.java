@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
-public class Project implements Comparable<Project>, Serializable {
+public class Project implements Comparable<Project>, Serializable, ITaskMatcher {
 
     private String title;
     private int id;
@@ -33,10 +34,30 @@ public class Project implements Comparable<Project>, Serializable {
         return copy;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public int getNextTaskId() {
+        return nextTaskId;
+    }
+
     public Task addTask(String description, TaskPrio prio) {
-        Task task = new Task(description, prio, nextTaskId++);  // ej säker på denna!
-        tasks.add(task);
-        return task;
+        Task t = new Task(description, prio, nextTaskId++);  // ej säker på denna!
+        tasks.add(t);
+        return t;
     }
 
     public ProjectState getProjectState() {
@@ -63,6 +84,16 @@ public class Project implements Comparable<Project>, Serializable {
             return this.created;
     }
 
+    public List<Task> findTasks(ITaskMatcher matcher) {
+        List<Task> find = new ArrayList<>();
+        for (Task task : tasks) {
+            if (matcher.match(task)) {
+                find.add(task);
+            }
+        }
+        return find;
+    }
+
     @Override
     public int compareTo(Project other) {
         return this.title.compareTo(other.title);
@@ -78,5 +109,10 @@ public class Project implements Comparable<Project>, Serializable {
                 ", nextTaskId=" + nextTaskId +
                 ", tasks=" + tasks +
                 '}';
+    }
+
+    @Override
+    public boolean match(Task tasks) {
+        return false;
     }
 }

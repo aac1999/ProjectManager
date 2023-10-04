@@ -5,19 +5,39 @@ import java.time.LocalDate;
 
 public class Task implements Comparable<Task>, Serializable { //Tror det ska vara Comparable<Task>?
 
-    private String descriptions;
-    private int id;
+    private final String descriptions;
+    private final int id;
     private String Takenby;
     private TaskState state;
     private LocalDate lastUpdate;
     private TaskPrio prio;
+
+    public String getDescriptions() {
+        return descriptions;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTakenby() {
+        return Takenby;
+    }
+
+    public TaskState getState() {
+        return state;
+    }
+
+    public TaskPrio getPrio() {
+        return prio;
+    }
 
     Task(String descriptions, TaskPrio prio, int id) {
         //ska vara package-private (~) så ingen private/public i början?
         this.descriptions = descriptions;
         this.id = id;
         this.Takenby = null; //lagt till null
-        this.state = TaskState.TO_DO;
+        this.state = TaskState.DONE;
         this.lastUpdate = LocalDate.now();
         this.prio = prio;
     }
@@ -51,6 +71,18 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
     public LocalDate getLastUpdate() {  // Lagt till metoden sålänge, får se vad Anders säger
         return lastUpdate;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if(other instanceof Task) {
+            Task otherTask = (Task) other;
+            return this.compareTo(otherTask) == 0;
+        }
+        return false;
+    }
+
+
 
     @Override
     public String toString() {
