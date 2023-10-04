@@ -1,4 +1,6 @@
-package com.example.lab3.Project;
+package com.example.lab3.Project.model;
+
+import com.example.lab3.Project.model.Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class ProjectsManager {
     public void setProjects(List<Project> incomingProjects) {
         projects.clear();
         //lägg till projects ? (incomingProjects)
+        projects.addAll(incomingProjects);
         nextProjectId++;
     }
 
@@ -29,7 +32,7 @@ public class ProjectsManager {
     public boolean isTitleUnique(String title) { //TROR JAG HAR GJORT RÄTT MEN OSÄKER
         //ska kolla om titeln är unik eller ej
         for (int i = 1; i < projects.size(); i++) {
-            if (projects.get(i).getTitle() == title) {
+            if (projects.get(i).getTitle().equals(title)) {
                 return true;
             }
         }
@@ -43,12 +46,35 @@ public class ProjectsManager {
 
     public ArrayList<Project> getProjects() {
         //Getter
-        return projects;
+        ArrayList<Project> copy = new ArrayList<>();
+        copy.addAll(projects);
+        return copy;
+    }
+
+    public Project getProjectById(int id) {
+        for (Project project : projects) {
+            if (project.getId() == id) {
+                return project;
+            }
+        }
+        return null;
+        //eller exception?
     }
 
     public int getNextProjectId() {
         //Getter
         return nextProjectId;
+    }
+
+    private int getHighestId() {
+        int highestId = projects.get(0).getId();
+        for (int i = 1; i < projects.size(); i++) {
+            int currentId = projects.get(i).getId();
+            if (currentId > highestId) {
+                highestId = currentId; // Update the highest ID
+            }
+        }
+        return highestId;
     }
 
     @Override

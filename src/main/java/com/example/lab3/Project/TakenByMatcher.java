@@ -1,6 +1,9 @@
 package com.example.lab3.Project;
 
-public class TakenByMatcher implements ITaskMatcher{
+import com.example.lab3.Project.model.ITaskMatcher;
+import com.example.lab3.Project.model.Task;
+
+public class TakenByMatcher implements ITaskMatcher {
     private String Takenby;
 
     public TakenByMatcher(String takenby) {

@@ -1,4 +1,6 @@
-package com.example.lab3.Project;
+package com.example.lab3.Project.model;
+
+import com.example.lab3.Project.model.Task;
 
 public interface ITaskMatcher {
 
