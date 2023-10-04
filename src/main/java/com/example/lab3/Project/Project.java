@@ -26,7 +26,14 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
     }
 
     public Task getTaskById(int id) {
-        return tasks.get(id);
+        //ändrat så att den matchar med taskens faktiska id
+        //istället för dess position
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                return task;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Task> getTasks() {
