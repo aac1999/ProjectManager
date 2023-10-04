@@ -117,7 +117,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
     public boolean equals(Object other) {
         //Gjorde samma som vi hade i Task.
         if (this == other) return true;
-        if(other instanceof Task) {
+        if(other instanceof Project) {
             Project otherProject = (Project) other;
             return this.compareTo(otherProject) == 0;
         }
