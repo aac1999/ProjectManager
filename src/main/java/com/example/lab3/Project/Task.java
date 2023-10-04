@@ -63,12 +63,12 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
         //jämför prio(första nyckeln) och description (andra nyckeln)
         int result = this.prio.ordinal() - other.prio.ordinal();
         if(result == 0) {
-            result = this.descriptions.compareTo(other.descriptions); //fråga Anders OM RÄTT
+            result = this.descriptions.compareTo(other.descriptions);
         }
         return result;
     }
 
-    public LocalDate getLastUpdate() {  // Lagt till metoden sålänge, får se vad Anders säger
+    public LocalDate getLastUpdate() {
         return lastUpdate;
     }
 
