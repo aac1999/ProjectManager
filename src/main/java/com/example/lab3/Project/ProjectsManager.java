@@ -28,7 +28,7 @@ public class ProjectsManager {
     public boolean isTitleUnique(String title) { //TROR JAG HAR GJORT RÄTT MEN OSÄKER
         //ska kolla om titeln är unik eller ej
         for (int i = 1; i < projects.size(); i++) {
-            if (projects.get(i).getTitle() == title) {
+            if (projects.get(i).getTitle().equals(title)) {
                 return true;
             }
         }
