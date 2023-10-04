@@ -2,7 +2,6 @@ package com.example.lab3.Project;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Task implements Comparable<Task>, Serializable { //Tror det ska vara Comparable<Task>?
 
@@ -12,16 +11,6 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
     private TaskState state;
     private LocalDate lastUpdate;
     private TaskPrio prio;
-
-    Task(String descriptions, TaskPrio prio, int id) {
-        //ska vara package-private (~) så ingen private/public i början?
-        this.descriptions = descriptions;
-        this.id = id;
-        this.Takenby = null; //lagt till null
-        this.state = TaskState.TO_DO;
-        this.lastUpdate = LocalDate.now();
-        this.prio = prio;
-    }
 
     public String getDescriptions() {
         return descriptions;
@@ -39,12 +28,18 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
         return state;
     }
 
-    public LocalDate getLastUpdate() {
-        return lastUpdate;
-    }
-
     public TaskPrio getPrio() {
         return prio;
+    }
+
+    Task(String descriptions, TaskPrio prio, int id) {
+        //ska vara package-private (~) så ingen private/public i början?
+        this.descriptions = descriptions;
+        this.id = id;
+        this.Takenby = null; //lagt till null
+        this.state = TaskState.DONE;
+        this.lastUpdate = LocalDate.now();
+        this.prio = prio;
     }
 
     public void setTakenby(String takenby) {
@@ -73,23 +68,25 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
         return result;
     }
 
+    public LocalDate getLastUpdate() {  // Lagt till metoden sålänge, får se vad Anders säger
+        return lastUpdate;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) return true;
         if(other instanceof Task) {
-            Task otherTask = (Task) other; // downcast reference type to Task
+            Task otherTask = (Task) other;
             return this.compareTo(otherTask) == 0;
-            //return this.prio == otherTask.prio && this.descriptions == otherTask.descriptions;
         }
         return false;
-        /*
-        if (!(other instanceof Task task)) return false;
-        return Objects.equals(descriptions, task.descriptions) && prio == task.prio; */
     }
+
+
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "\nTask{" +
                 "descriptions='" + descriptions + '\'' +
                 ", id=" + id +
                 ", Takenby='" + Takenby + '\'' +
