@@ -4,6 +4,7 @@ import com.example.lab3.Project.*;
 import com.example.lab3.Project.ui.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProjectsManager {
@@ -45,12 +46,7 @@ public class ProjectsManager {
         projects.remove(project);
     }
 
-    public ArrayList<Project> getProjects() {
-        //Getter
-        ArrayList<Project> copy = new ArrayList<>();
-        copy.addAll(projects);
-        return copy;
-    }
+
 
     public Project getProjectById(int id) {
         for (Project project : projects) {
@@ -60,6 +56,18 @@ public class ProjectsManager {
         }
         return null;
         //eller exception?
+    }
+
+    public List<Project> findProjects(String title) {
+        List<Project> find = new ArrayList<>();
+        Collections.sort(projects); //sortering
+        //System.out.println("Sorted: " + tasks); kan testas hårdkodat i main, ta bort innan inlämning!
+        for (Project project : projects) {
+            if (project.getTitle().equals(title)) {
+                find.add(project);
+            }
+        }
+        return find;
     }
 
     public int getNextProjectId() {

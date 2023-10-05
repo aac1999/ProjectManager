@@ -53,7 +53,7 @@ public class MainUI {
     private void findProjects() {
         System.out.print("Project name? ");
         String name = scan.nextLine();
-        List<Project> result = manager.getProjects(); //findProjects(name) OBS! Ändra GetProjects till findProjects!!
+        List<Project> result = manager.findProjects(name); //findProjects(name) OBS! Ändra GetProjects till findProjects!!
         if (result.isEmpty()) {
             System.out.println("No matches.");
         } else {
