@@ -149,7 +149,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
         // funkar endast om jag lagt till getLastUpdate() i Task.java
         if (!tasks.isEmpty()) {
             LocalDate date = tasks.get(0).getLastUpdate();
-            for (int i = 1; i < tasks.size(); i++) {
+            for (int i = 0; i < tasks.size(); i++) {
                 if (date.isBefore(tasks.get(i).getLastUpdate())) {
                     date = tasks.get(i).getLastUpdate();
                 }

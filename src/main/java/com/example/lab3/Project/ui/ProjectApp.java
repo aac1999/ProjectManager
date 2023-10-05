@@ -17,6 +17,7 @@ public class ProjectApp {
         File f = new File("project1.ser");
         List<Project> p = ProjectsFileIO.deSerializeFromFile(f);
         ProjectsManager proj = new ProjectsManager();
+        proj.setProjects(p);
         MainUI ui = new MainUI(proj);
         ui.mainLoop();
         ProjectsFileIO.serializeToFile(f, proj.getProjects());

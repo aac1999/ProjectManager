@@ -13,27 +13,26 @@ public class ProjectsManager {
 
     public ProjectsManager() {
         this.projects = new ArrayList<>();
-        this.nextProjectId = 0; //antar att det ska börja från 0?
+        this.nextProjectId = 0;
     }
 
     public void setProjects(List<Project> incomingProjects) {
         projects.clear();
-        //lägg till projects ? (incomingProjects)
         projects.addAll(incomingProjects);
-        nextProjectId++;
+        this.nextProjectId = projects.size();
+        //nextProjectId++;
     }
 
     public Project addProject(String title, String description) {
-        //kontrollera att titeln är unik med hjälp av isTitleUnique, om ej, släng TitleNotUniqueException
-        if(isTitleUnique(title)) throw new TitleNotUniqueException(); //kontrollera senare om det rätt
+        if(isTitleUnique(title)) throw new TitleNotUniqueException();
         Project p = new Project(title, description, nextProjectId++);
         projects.add(p);
         return p;
     }
 
-    public boolean isTitleUnique(String title) { //TROR JAG HAR GJORT RÄTT MEN OSÄKER
-        //ska kolla om titeln är unik eller ej
-        for (int i = 1; i < projects.size(); i++) {
+    public boolean isTitleUnique(String title) {
+
+        for (int i = 0; i < projects.size(); i++) {
             if (projects.get(i).getTitle().equals(title)) {
                 return true;
             }
@@ -83,14 +82,15 @@ public class ProjectsManager {
     }
 
     private int getHighestId() {
-        int highestId = projects.get(0).getId();
-        for (int i = 1; i < projects.size(); i++) {
+        /* int highestId = projects.get(0).getId(); //ska vara 0?
+        for (int i = 0; i < projects.size(); i++) {
             int currentId = projects.get(i).getId();
             if (currentId > highestId) {
                 highestId = currentId; // Update the highest ID
             }
         }
-        return highestId;
+        return highestId; */
+        return nextProjectId;
     }
 
     @Override
