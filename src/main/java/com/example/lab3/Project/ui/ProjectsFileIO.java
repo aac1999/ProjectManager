@@ -4,6 +4,7 @@ package com.example.lab3.Project.ui;
 import com.example.lab3.Project.model.Project;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,20 +18,26 @@ public class ProjectsFileIO {
      * in serialized form.
      */
     public static void serializeToFile(File file, List<Project> data) throws IOException {
-        // ...
-        // and then, make sure the file always get closed
-        ObjectOutputStream out = null; //objekten blir binär??
+        FileOutputStream fout = null;
 
-        // Serialize to file
         try {
-            out = new ObjectOutputStream(new FileOutputStream(file));
-            out.writeObject(data);
+            fout = new FileOutputStream(file);
+            ObjectOutputStream ous = new ObjectOutputStream(fout);
+
+            ous.writeObject(data);
 
             System.out.println("Serializing successfully completed");
-        } finally {
-            if (out != null) {
-                out.close();
+        }
+
+        catch (Exception e) {
+            System.out.println(e);
+        }
+
+        finally {
+            try {
+                if (fout != null) fout.close();
             }
+            catch (IOException e) {}
         }
     }
 
@@ -40,21 +47,40 @@ public class ProjectsFileIO {
      */
     @SuppressWarnings("unchecked")
     public static List<Project> deSerializeFromFile(File file) throws IOException, ClassNotFoundException {
-        // ...
-        // and then, make sure the file always get closed
-        ObjectInputStream in = null;
+        FileInputStream fin = null;
+
+        ArrayList<Project> proj = new ArrayList<>();
+
         try {
-            in = new ObjectInputStream(new FileInputStream(file));
-            List<Project> data = (List<Project>) in.readObject();
-            return data;
-        } finally {
-            if (in != null) {
-                in.close();
+            fin = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fin);
+
+            ArrayList<Project> projects = (ArrayList<Project>) ois.readObject();
+
+            System.out.println("Deserializing successfully completed");
+            for (Project p: projects) {
+                System.out.println(p.toString());
+                proj.add(p);
             }
         }
+
+        catch (IOException e) {
+            System.out.println(e);
+        }
+
+        catch (ClassNotFoundException e) {
+            System.out.println("Klassen för objekten på filen är inte känd!");
+        }
+
+        finally {
+            try {
+                if (fin != null) fin.close();
+            }
+            catch (IOException e) {}
+        }
+
+        return proj;
     }
 
-    private ProjectsFileIO() {
-    }
-
+    private ProjectsFileIO() {}
 }
