@@ -30,8 +30,8 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
         //ska vara package-private (~) så ingen private/public i början?
         this.descriptions = descriptions;
         this.id = id;
-        this.Takenby = null; //lagt till null
-        this.state = TaskState.DONE;
+        this.Takenby = "";
+        this.state = TaskState.TO_DO;
         this.lastUpdate = LocalDate.now();
         this.prio = prio;
     }

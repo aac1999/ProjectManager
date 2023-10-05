@@ -204,8 +204,8 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
     }
 
     /**
-     * gives the user a string representation of the task.
-     * @return a string representation of the task
+     * gives the user a string representation of the project.
+     * @return a string representation of the project
      */
     @Override
     public String toString() {
