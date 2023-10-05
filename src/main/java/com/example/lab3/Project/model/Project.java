@@ -127,14 +127,13 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
 
     @Override
     public String toString() {
-        return "\nProject{" +
-                "title='" + title + '\'' +
-                ", id=" + id +
-                ", description='" + description + '\'' +
-                ", created=" + created +
-                ", nextTaskId=" + nextTaskId +
-                ", tasks=" + tasks +
-                '}';
+        return  "\n      Project: " + id +
+                "  |  Title: " + title +
+                "  | Description: " + description +
+                "   From: " + created +
+                "\n      --------------------------------" +
+                "--------------------------------" +
+                "\n"+ tasks;
     }
 
     @Override

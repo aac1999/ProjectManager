@@ -95,9 +95,7 @@ public class ProjectsManager {
 
     @Override
     public String toString() {
-        return "ProjectsManager{" +
-                "projects=" + projects +
-                ", nextProjectId=" + nextProjectId +
-                '}';
+        return "Projects Manager" +
+                "\n-----------------";
     }
 }
