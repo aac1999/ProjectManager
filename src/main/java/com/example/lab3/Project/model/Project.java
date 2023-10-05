@@ -163,12 +163,12 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
      */
     public List<Task> findTasks(ITaskMatcher matcher) {
         List<Task> find = new ArrayList<>();
-        Collections.sort(tasks);
         for (Task task : tasks) {
             if (matcher.match(task)) {
                 find.add(task);
             }
         }
+        Collections.sort(tasks);
         return find;
     }
 
