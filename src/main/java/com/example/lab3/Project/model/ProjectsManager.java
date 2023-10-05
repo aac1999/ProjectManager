@@ -46,18 +46,6 @@ public class ProjectsManager {
         projects.remove(project);
     }
 
-
-
-    public Project getProjectById(int id) {
-        for (Project project : projects) {
-            if (project.getId() == id) {
-                return project;
-            }
-        }
-        return null;
-        //eller exception?
-    }
-
     public List<Project> findProjects(String title) {
         List<Project> find = new ArrayList<>();
         Collections.sort(projects); //sortering
@@ -68,6 +56,23 @@ public class ProjectsManager {
             }
         }
         return find;
+    }
+
+    public ArrayList<Project> getProjects() {
+        //Getter
+        ArrayList<Project> copy = new ArrayList<>();
+        copy.addAll(projects);
+        return copy;
+    }
+
+    public Project getProjectById(int id) {
+        for (Project project : projects) {
+            if (project.getId() == id) {
+                return project;
+            }
+        }
+        return null;
+        //eller exception?
     }
 
     public int getNextProjectId() {
