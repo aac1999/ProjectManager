@@ -3,12 +3,12 @@ package com.example.lab3.Shapes;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Circle extends FillableShape{
+public class Circle extends FillableShape {
     private double diameter;
 
     public Circle(double x, double y, Color color, boolean filled, double diameter) {
         super(x, y, color, filled);
-        if(diameter<=0) throw new IllegalArgumentException("Too small Diameter Value");
+        if (diameter <= 0) throw new IllegalArgumentException("Too small Diameter Value");
         this.diameter = diameter;
     }
 
@@ -22,17 +22,16 @@ public class Circle extends FillableShape{
     }
 
     public void setDiameter(double diameter) {
-        if(diameter<=0) throw new IllegalArgumentException("Too small Diameter Value");
+        if (diameter <= 0) throw new IllegalArgumentException("Too small Diameter Value");
         this.diameter = diameter;
     }
 
     @Override
     public void paint(GraphicsContext gc) {
-        if(!isFilled()) {
+        if (!isFilled()) {
             gc.setStroke(getColor());
             gc.strokeOval(getX(), getY(), diameter, diameter); //antar att jag gjort rätt?
-        }
-        else if(isFilled()){
+        } else if (isFilled()) {
             gc.setFill(getColor());
             gc.fillOval(getX(), getY(), diameter, diameter); //kolla om allt stämmer senare!!
         }
@@ -45,7 +44,7 @@ public class Circle extends FillableShape{
         super.constrain(boxX, boxY, boxWidth, boxHeight);
         double dx = getDx();
         double dy = getDy();
-        if (getX() + diameter < boxX ) {
+        if (getX() + diameter < boxX) {
             dx = Math.abs(dx);
         } else if (getX() + diameter > boxWidth) {
             dx = -Math.abs(dx);

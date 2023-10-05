@@ -22,7 +22,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
         this.id = id;
         this.description = description;
         this.nextTaskId = 0;    // antar att det ska börja från noll?
-        this.created =  LocalDate.now();
+        this.created = LocalDate.now();
         this.tasks = new ArrayList<>();
     }
 
@@ -78,11 +78,9 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
     public ProjectState getProjectState() {
         if (tasks.isEmpty()) {
             return ProjectState.EMPTY;
-        }
-        else if (tasks.containsAll(Collections.singleton(TaskState.DONE))) {
+        } else if (tasks.containsAll(Collections.singleton(TaskState.DONE))) {
             return ProjectState.COMPLETED;
-        }
-        else return ProjectState.ONGOING;
+        } else return ProjectState.ONGOING;
     }
 
     public LocalDate getLastUpdated() {
@@ -96,7 +94,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
             }
             return date;
         }
-            return this.created;
+        return this.created;
     }
 
     public List<Task> findTasks(ITaskMatcher matcher) {
@@ -120,7 +118,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
     public boolean equals(Object other) {
         //Gjorde samma som vi hade i Task.
         if (this == other) return true;
-        if(other instanceof Project) {
+        if (other instanceof Project) {
             Project otherProject = (Project) other;
             return this.compareTo(otherProject) == 0;
         }
