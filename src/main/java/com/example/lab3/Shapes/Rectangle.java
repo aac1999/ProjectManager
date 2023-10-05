@@ -41,8 +41,6 @@ public class Rectangle extends FillableShape{
     @Override
     public void move(long elapsedTimeNs) {
         super.move(elapsedTimeNs);
-        //x2 += getDx() * elapsedTimeNs / BILLION;
-        //y2 += getDy() * elapsedTimeNs / BILLION;
     }
 
     @Override

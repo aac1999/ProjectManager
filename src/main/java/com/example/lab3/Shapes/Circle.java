@@ -14,7 +14,7 @@ public class Circle extends FillableShape {
 
     public Circle() {
         super();
-        this.diameter = 100; //sätter bara ett random värde!
+        this.diameter = 100;
     }
 
     public double getDiameter() {
@@ -30,10 +30,10 @@ public class Circle extends FillableShape {
     public void paint(GraphicsContext gc) {
         if (!isFilled()) {
             gc.setStroke(getColor());
-            gc.strokeOval(getX(), getY(), diameter, diameter); //antar att jag gjort rätt?
+            gc.strokeOval(getX(), getY(), diameter, diameter);
         } else if (isFilled()) {
             gc.setFill(getColor());
-            gc.fillOval(getX(), getY(), diameter, diameter); //kolla om allt stämmer senare!!
+            gc.fillOval(getX(), getY(), diameter, diameter);
         }
     }
 
