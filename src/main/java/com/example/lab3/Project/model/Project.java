@@ -101,6 +101,8 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
 
     public List<Task> findTasks(ITaskMatcher matcher) {
         List<Task> find = new ArrayList<>();
+        Collections.sort(tasks); //sortering
+        //System.out.println("Sorted: " + tasks); kan testas hårdkodat i main, ta bort innan inlämning!
         for (Task task : tasks) {
             if (matcher.match(task)) {
                 find.add(task);

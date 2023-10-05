@@ -45,7 +45,7 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
         this.prio = prio;
     }
 
-    public void setTakenby(String takenby) {
+    public void setTakenBy(String takenby) {
         if(this.state == TaskState.IN_PROGRESS) throw new IllegalStateException("Task In Progress");
         Takenby = takenby;
         this.lastUpdate = LocalDate.now();
