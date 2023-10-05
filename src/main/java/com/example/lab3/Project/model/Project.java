@@ -32,7 +32,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
         this.title = title;
         this.id = id;
         this.description = description;
-        this.nextTaskId = 0;    // antar att det ska börja från noll?
+        this.nextTaskId = 0;
         this.created = LocalDate.now();
         this.tasks = new ArrayList<>();
     }
@@ -43,15 +43,12 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
      * @return the given task based on its identification
      */
     public Task getTaskById(int id) {
-        //ändrat så att den matchar med taskens faktiska id
-        //istället för dess position
         for (Task task : tasks) {
             if (task.getId() == id) {
                 return task;
             }
         }
         return null;
-        // eller exception?
     }
 
     /**
@@ -112,7 +109,7 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
      * @return returns the task back.
      */
     public Task addTask(String description, TaskPrio prio) {
-        Task t = new Task(description, prio, nextTaskId++);  // ej säker på denna!
+        Task t = new Task(description, prio, nextTaskId++);
         tasks.add(t);
         return t;
     }
@@ -146,7 +143,6 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
      * @return the date a task (or project if the list is empty) was created.
      */
     public LocalDate getLastUpdated() {
-        // funkar endast om jag lagt till getLastUpdate() i Task.java
         if (!tasks.isEmpty()) {
             LocalDate date = tasks.get(0).getLastUpdate();
             for (int i = 0; i < tasks.size(); i++) {
@@ -168,7 +164,6 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
     public List<Task> findTasks(ITaskMatcher matcher) {
         List<Task> find = new ArrayList<>();
         Collections.sort(tasks);
-        //System.out.println("Sorted: " + tasks); kan testas hårdkodat i main, ta bort innan inlämning!
         for (Task task : tasks) {
             if (matcher.match(task)) {
                 find.add(task);
@@ -194,7 +189,6 @@ public class Project implements Comparable<Project>, Serializable, ITaskMatcher 
      */
     @Override
     public boolean equals(Object other) {
-        //Gjorde samma som vi hade i Task.
         if (this == other) return true;
         if (other instanceof Project) {
             Project otherProject = (Project) other;

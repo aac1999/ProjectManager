@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ProjectsManager {
     private ArrayList<Project> projects;
-    private int nextProjectId; //Ska den vara int, står ej i instruktioner?
+    private int nextProjectId;
 
     /**
      * Constructs and creates a new ProjectManager
@@ -32,7 +32,6 @@ public class ProjectsManager {
         projects.clear();
         projects.addAll(incomingProjects);
         this.nextProjectId = projects.size();
-        //nextProjectId++;
     }
 
     /**
@@ -70,7 +69,6 @@ public class ProjectsManager {
      * @param project the project to be removed
      */
     public void removeProject(Project project) {
-        //Säkerställ att den är rätt
         projects.remove(project);
     }
 
@@ -87,7 +85,6 @@ public class ProjectsManager {
             }
         }
         return null;
-        //eller exception?
     }
 
 
@@ -111,10 +108,9 @@ public class ProjectsManager {
      * @return the copy of the internal list of projects.
      */
     public ArrayList<Project> getProjects() {
-        //Getter
         ArrayList<Project> copy = new ArrayList<>();
         copy.addAll(projects);
-        return copy; //test
+        return copy;
     }
 
     /**
@@ -122,7 +118,6 @@ public class ProjectsManager {
      * @return the value of the ID
      */
     public int getNextProjectId() {
-        //Getter
         return nextProjectId;
     }
 
@@ -131,7 +126,7 @@ public class ProjectsManager {
      * @return the value of the highest ID
      */
     private int getHighestId() {
-        int highestId = 0; //projects.get(0).getId(); //ska vara 0?
+        int highestId = 0;
         for (int i = 0; i < projects.size(); i++) {
         int currentId = projects.get(i).getId();
             if (currentId > highestId) {

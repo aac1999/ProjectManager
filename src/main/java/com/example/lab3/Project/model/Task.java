@@ -11,7 +11,7 @@ import java.time.LocalDate;
  This Class is used to create, handle and compare individual Tasks.
  @author Adil Chohan, Roman Luis Furman
  */
-public class Task implements Comparable<Task>, Serializable { //Tror det ska vara Comparable<Task>?
+public class Task implements Comparable<Task>, Serializable {
 
     private final String descriptions;
     private final int id;
@@ -27,7 +27,6 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
      * @param id The identification of a task
      */
     Task(String descriptions, TaskPrio prio, int id) {
-        //ska vara package-private (~) så ingen private/public i början?
         this.descriptions = descriptions;
         this.id = id;
         this.Takenby = "";
@@ -78,7 +77,6 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
 
     @Override
     public int compareTo(Task other) {
-        //jämför prio(första nyckeln) och description (andra nyckeln)
         int result = this.prio.ordinal() - other.prio.ordinal();
         if (result == 0) {
             result = this.descriptions.compareTo(other.descriptions);
