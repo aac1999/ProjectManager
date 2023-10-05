@@ -47,7 +47,12 @@ public class ProjectsManager {
     }
 
 
-
+    public ArrayList<Project> getProjects() {
+        //Getter
+        ArrayList<Project> copy = new ArrayList<>();
+        copy.addAll(projects);
+        return copy;
+    }
     public Project getProjectById(int id) {
         for (Project project : projects) {
             if (project.getId() == id) {
@@ -57,6 +62,8 @@ public class ProjectsManager {
         return null;
         //eller exception?
     }
+
+
 
     public List<Project> findProjects(String title) {
         List<Project> find = new ArrayList<>();
