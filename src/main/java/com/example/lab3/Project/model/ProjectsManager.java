@@ -51,7 +51,7 @@ public class ProjectsManager {
         //Getter
         ArrayList<Project> copy = new ArrayList<>();
         copy.addAll(projects);
-        return copy;
+        return copy; //test
     }
     public Project getProjectById(int id) {
         for (Project project : projects) {
