@@ -155,13 +155,12 @@ public class Task implements Comparable<Task>, Serializable { //Tror det ska var
      */
     @Override
     public String toString() {
-        return "\nTask{" +
-                "descriptions='" + descriptions + '\'' +
-                ", id=" + id +
-                ", Takenby='" + Takenby + '\'' +
-                ", state=" + state +
-                ", lastUpdate=" + lastUpdate +
-                ", prio=" + prio +
-                '}';
+        return  "\n             Task: " + id +
+                "  |  Descriptions: " + descriptions +
+                "\n             -----------------------------------" +
+                "\n             Taken by: "+ Takenby  +
+                "\n             State: " + state +
+                "\n             Last update: " + lastUpdate +
+                "\n             Priority: " + prio + "\n";
     }
 }
