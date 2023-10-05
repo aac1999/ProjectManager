@@ -43,7 +43,7 @@ public class ProjectsManager {
      * different project
      */
     public Project addProject(String title, String description) {
-        if(isTitleUnique(title)) throw new TitleNotUniqueException();
+        if(!isTitleUnique(title)) throw new TitleNotUniqueException();
         Project p = new Project(title, description, nextProjectId++);
         projects.add(p);
         return p;
@@ -58,10 +58,10 @@ public class ProjectsManager {
 
         for (int i = 0; i < projects.size(); i++) {
             if (projects.get(i).getTitle().equals(title)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     /**
