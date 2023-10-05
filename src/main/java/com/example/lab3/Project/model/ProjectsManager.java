@@ -58,13 +58,6 @@ public class ProjectsManager {
         return find;
     }
 
-    public ArrayList<Project> getProjects() {
-        //Getter
-        ArrayList<Project> copy = new ArrayList<>();
-        copy.addAll(projects);
-        return copy;
-    }
-
     public Project getProjectById(int id) {
         for (Project project : projects) {
             if (project.getId() == id) {
