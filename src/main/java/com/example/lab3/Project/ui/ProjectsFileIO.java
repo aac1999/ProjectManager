@@ -1,7 +1,7 @@
 package com.example.lab3.Project.ui;
 
 
-import com.example.lab3.Project. model.Project;
+import com.example.lab3.Project.model.Project;
 
 import java.io.*;
 import java.util.List;
@@ -27,9 +27,8 @@ public class ProjectsFileIO {
             out.writeObject(data);
 
             System.out.println("Serializing successfully completed");
-        }
-        finally {
-            if(out!=null) {
+        } finally {
+            if (out != null) {
                 out.close();
             }
         }
@@ -44,18 +43,18 @@ public class ProjectsFileIO {
         // ...
         // and then, make sure the file always get closed
         ObjectInputStream in = null;
-        try{
+        try {
             in = new ObjectInputStream(new FileInputStream(file));
-            List<Project> projects = (List<Project>) in.readObject();
-            return projects;
-        }
-        finally {
-            if (in!=null) {
+            List<Project> data = (List<Project>) in.readObject();
+            return data;
+        } finally {
+            if (in != null) {
                 in.close();
             }
         }
     }
 
-    private ProjectsFileIO() {}
+    private ProjectsFileIO() {
+    }
 
 }
